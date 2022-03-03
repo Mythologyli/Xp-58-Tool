@@ -11,6 +11,10 @@ public:
 
     void FeedNLine(int n) const;
 
+    void ReverseModeOn() const;
+
+    void ReverseModeOff() const;
+
     ~Xp58();
 
 private:
