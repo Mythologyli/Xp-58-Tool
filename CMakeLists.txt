@@ -8,6 +8,10 @@ set(SOURCES
         xp58.cpp
         )
 
+add_subdirectory(cxxopts)
+
 add_executable(Xp_58_Tool ${SOURCES})
+
+target_link_libraries(Xp_58_Tool cxxopts)
 
 set_target_properties(Xp_58_Tool PROPERTIES OUTPUT_NAME "xp58tool")
