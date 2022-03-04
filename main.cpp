@@ -12,7 +12,9 @@ int main(int argc, char **argv)
     options.add_options()
             ("d,device", "Xp-58 device path", cxxopts::value<std::string>()->default_value("/dev/usb/lp0"))
             ("t,text", "Text", cxxopts::value<std::string>())
-            ("h,help", "Xp-58 Tool Help");
+            ("s,size", "Text size", cxxopts::value<uint8_t>()->default_value("1"))
+            ("r,reverse", "Enable reverse mode", cxxopts::value<bool>()->default_value("false"))
+            ("h,help", "Help");
 
     auto result = options.parse(argc, argv);
 
@@ -25,6 +27,17 @@ int main(int argc, char **argv)
     std::cout << "Start printing..." << std::endl;
 
     Xp58 printer(result["device"].as<std::string>().c_str());
+
+    if (result["size"].as<uint8_t>() != 1)
+    {
+        printer.SetCharacterSize(result["size"].as<uint8_t>(), result["size"].as<uint8_t>());
+    }
+
+    if (result["reverse"].as<bool>())
+    {
+        printer.ReverseModeOn();
+    }
+
     printer.PrintLine(result["text"].as<std::string>());
     printer.FeedNLines(2);
 
