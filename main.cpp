@@ -9,19 +9,14 @@ int main()
 
     Xp58 printer;
 
-    for (int i = 0; i < 5; i++)
+    printer.SetCharacterSize(2, 2);
+
+    for (int i = 0; i < 1; i++)
     {
         printer.PrintLine("This is a text to test Xp-58 printer.");
     }
 
-    printer.ReverseModeOn();
-
-    for (int i = 0; i < 5; i++)
-    {
-        printer.PrintLine("This is a text to test Xp-58 printer.");
-    }
-
-    printer.FeedNLine(2);
+    printer.FeedNLines(2);
 
     return 0;
 }

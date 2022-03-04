@@ -9,11 +9,13 @@ public:
 
     void PrintLine(const std::string &text) const;
 
-    void FeedNLine(int n) const;
+    void FeedNLines(uint8_t n) const;
 
     void ReverseModeOn() const;
 
     void ReverseModeOff() const;
+
+    void SetCharacterSize(uint8_t width, uint8_t height) const;
 
     ~Xp58();
 
